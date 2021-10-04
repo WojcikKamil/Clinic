@@ -41,6 +41,7 @@ namespace ClinicAPI
 
             services.AddAuthentication();
             services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
             
             // Added Cors Policy
             services.AddCors(o => {
@@ -53,6 +54,7 @@ namespace ClinicAPI
             services.AddAutoMapper(typeof(MapperInitializer));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthManager, AuthManager> ();
 
             services.AddSwaggerGen(c =>
             {
@@ -79,6 +81,8 @@ namespace ClinicAPI
             app.UseCors("AllowAll");
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
