@@ -16,6 +16,7 @@ namespace ClinicAPI.Configurations
             CreateMap<Doctor, CreateDoctorDTO>().ReverseMap();
             CreateMap<Patient, PatientDTO>().ReverseMap();
             CreateMap<Patient, CreatePatientDTO>().ReverseMap();
+            CreateMap<ApiUser, UserDTO>().ReverseMap();
         }
     }
 }
