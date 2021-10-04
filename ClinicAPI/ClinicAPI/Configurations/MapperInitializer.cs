@@ -13,9 +13,9 @@ namespace ClinicAPI.Configurations
         public MapperInitializer()
         {
             CreateMap<Doctor, DoctorDTO>().ReverseMap();
-            CreateMap<Doctor, CreateDoctorDTO>().ReverseMap();
+            CreateMap<Doctor, AddDoctorDTO>().ReverseMap();
             CreateMap<Patient, PatientDTO>().ReverseMap();
-            CreateMap<Patient, CreatePatientDTO>().ReverseMap();
+            CreateMap<Patient, AddPatientDTO>().ReverseMap();
             CreateMap<ApiUser, UserDTO>().ReverseMap();
         }
     }
