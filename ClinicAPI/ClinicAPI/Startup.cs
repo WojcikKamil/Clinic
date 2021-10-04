@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using ClinicAPI.Configurations;
 using ClinicAPI.IRepository;
 using ClinicAPI.Repository;
+using Microsoft.AspNetCore.Identity;
+using ClinicAPI.Services;
 
 namespace ClinicAPI
 {
@@ -36,6 +38,9 @@ namespace ClinicAPI
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
             );
+
+            services.AddAuthentication();
+            services.ConfigureIdentity();
             
             // Added Cors Policy
             services.AddCors(o => {
