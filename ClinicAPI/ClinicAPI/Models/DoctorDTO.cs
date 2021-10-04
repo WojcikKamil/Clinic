@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClinicAPI.Models
 {
-    public class CreateDoctorDTO
+    public class AddDoctorDTO
     {
         [Required]
         [StringLength(maximumLength: 20, ErrorMessage = "Too long Name ;D")]
@@ -23,9 +23,14 @@ namespace ClinicAPI.Models
         public int OfficeId { get; set; }
     }
 
-    public class DoctorDTO : CreateDoctorDTO
+    public class DoctorDTO : AddDoctorDTO
     {
         public int Id { get; set; }
         public IList<PatientDTO> Patients { get; set; }
+    }
+
+    public class UpdateDoctorDTO : AddDoctorDTO
+    {
+
     }
 }
