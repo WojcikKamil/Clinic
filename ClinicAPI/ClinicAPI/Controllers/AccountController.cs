@@ -80,5 +80,6 @@ namespace ClinicAPI.Controllers
                 }
                 return Accepted(new { Token = await _authManager.CreateToken() });
         }
+
     }
 }

@@ -19,6 +19,9 @@ namespace ClinicAPI.Models
         [Required]
         [StringLength(maximumLength: 30, ErrorMessage = "Too long Adress ;D")]
         public string Adress { get; set; }
+
+       
+        public int DoctorId { get; set; }
     }
     public class PatientDTO : AddPatientDTO
     {
