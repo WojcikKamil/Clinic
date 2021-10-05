@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
 using ClinicAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicAPI.Services
 {
@@ -43,6 +44,7 @@ namespace ClinicAPI.Services
                     {
                         ValidateIssuer = true,
                         ValidateLifetime = true,
+                        ValidateAudience = false,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = jwtSettings.GetSection("Issuer").Value,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF32.GetBytes(key)),
@@ -71,6 +73,16 @@ namespace ClinicAPI.Services
                     
                     }
                 });
+            });
+        }
+
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(opt =>
+            {
+                opt.ReportApiVersions = true;
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
             });
         }
     }
