@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ClinicAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace ClinicAPI.IRepository
 {
@@ -11,6 +13,11 @@ namespace ClinicAPI.IRepository
         Task<IList<T>> GetALL(
             Expression<Func<T, bool>> expression = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            List<string> includes = null
+            );
+
+        Task<IPagedList<T>> GetPagedList(
+            RequestParams requestParams = null,
             List<string> includes = null
             );
 
