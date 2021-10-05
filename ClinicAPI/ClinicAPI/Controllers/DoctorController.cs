@@ -34,39 +34,27 @@ namespace ClinicAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetDoctors()
+        public async Task<IActionResult> GetDoctors([FromQuery] RequestParams requestParams)
         {
-            try
-            {
-                var doctors = await _unitOfWork.Doctors.GetALL();
+            
+                var doctors = await _unitOfWork.Doctors.GetPagedList(requestParams);
                 var results = _mapper.Map<IList<DoctorDTO>>(doctors);
                 return Ok(results);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(GetDoctors)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later");
-            }
+            
         }
 
-
+        [Authorize]
         [HttpGet("{id:int}", Name = "GetDoctor")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
         public async Task<IActionResult> GetDoctor(int id)
         {
-            try
-            {
+           
                 var doctor = await _unitOfWork.Doctors.Get(q => q.Id == id);
                 var result = _mapper.Map<DoctorDTO>(doctor);
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(GetDoctors)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later");
-            }
+            
         }
 
         [Authorize(Roles = "Administrator")]
@@ -143,8 +131,7 @@ namespace ClinicAPI.Controllers
                 return BadRequest();
             }
 
-            try
-            {
+           
                 var doctor = await _unitOfWork.Doctors.Get(q => q.Id == id);
                 if (doctor == null)
                 {
@@ -155,13 +142,6 @@ namespace ClinicAPI.Controllers
                 await _unitOfWork.Save();
 
                 return NoContent();
-            }
-
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(DeleteDoctor)}");
-                return StatusCode(500, "Internal Server Error. Please Try Again Later");
-            }
 
         }
         

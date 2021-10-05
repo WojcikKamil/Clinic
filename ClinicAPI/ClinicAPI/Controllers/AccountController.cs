@@ -46,8 +46,7 @@ namespace ClinicAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            try
-            {
+           
                 var user = _mapper.Map<ApiUser>(userDTO);
                 user.UserName = userDTO.Email;
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
@@ -63,12 +62,6 @@ namespace ClinicAPI.Controllers
 
                 await _userManager.AddToRolesAsync(user, userDTO.Roles);
                 return Accepted();
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(Register)}");
-                return Problem($"Something went wrong in the {nameof(Register)}", statusCode: 500);
-            }
         }
 
         [HttpPost]
@@ -80,19 +73,12 @@ namespace ClinicAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            try
-            {
+           
                 if (!await _authManager.ValidateUser(userDTO))
                 {
                     return Unauthorized();
                 }
                 return Accepted(new { Token = await _authManager.CreateToken() });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(Login)}");
-                return Problem($"Something went wrong in the {nameof(Login)}", statusCode: 500);
-            }
         }
     }
 }
