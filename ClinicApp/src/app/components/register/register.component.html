@@ -1,35 +1,52 @@
 <body>
   <div class="container">
-    <div class="title">Sign Up</div>
-    <form #registerForm = "ngForm" (ngSubmit)="register()" autocomplete="off">
-      <div class="user-details">
-        <div class="input-box">
-          <span class="details>"> Name </span>
-          <input type="text" name="firstname" [(ngModel)]="model.firstname" placeholder="Enter your name" required>
-        </div>
-        <div class="input-box">
-          <span class="details>"> Lastname </span>
-          <input type="text" name="lastname" [(ngModel)]="model.lastname" placeholder="Enter your name" required>
-        </div>
-        <div class="input-box">
-          <span class="details>"> Email </span>
-          <input type="text" name="email" [(ngModel)]="model.email" placeholder="Enter your Email" required>
-        </div>
-        <div class="input-box">
-          <span class="details>"> Phone Number </span>
-          <input type="text" name="phonenumber" [(ngModel)]="model.phonenumber" placeholder="Enter your Phone Number" required>
-        </div>
-        <div class="input-box">
-          <span class="details>"> Password </span>
-          <input type="password" name="password" [(ngModel)]="model.password" placeholder="Enrer your Password" required>
-        </div>
-        <div class="input-box">
-          <span class="details>"> Role </span>
-          <input type="text" name="roles" [(ngModel)]="model.roles" placeholder="Your role">
-        </div>
-      </div>
-    <div class="center">
-      <button mat-stroked-button type="submit">Register</button>
+    <div class="header">Register</div>
+  <form #registerForm = "ngForm" (ngSubmit)="register()" autocomplete="off">
+    <div class = "wrapper">
+
+        <mat-form-field class="center" appearance="fill">
+          <mat-label class="placeholder-color">Name</mat-label>
+            <input name="name" [(ngModel)]="model.name" matInput placeholder="Enter your Name" required>
+        </mat-form-field>
+
+
+
+      <mat-form-field class="center" appearance="fill">
+        <mat-label class="placeholder-color">LastName</mat-label>
+          <input name="lastname" [(ngModel)]="model.lastname" matInput placeholder="Enter your Surname" required>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="center" appearance="fill">
+        <mat-label class="placeholder-color">Email</mat-label>
+          <input name="email" [(ngModel)]="model.email" matInput placeholder="Enter your adress E-mail" required>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="center" appearance="fill">
+        <mat-label class="placeholder-color">Phone Number</mat-label>
+          <input name="phonenumber" [(ngModel)]="model.phonenumber" matInput placeholder="Enter Your Phone Number" required>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="center" appearance="fill">
+        <mat-label class="placeholder-color">Password</mat-label>
+          <input name="password" [(ngModel)]="model.password" matInput placeholder="Your password" required>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="center" appearance="fill">
+        <mat-label class="placeholder-color">Role</mat-label>
+          <input name="role" [(ngModel)]="model.role" matInput placeholder="Your role" required>
+      </mat-form-field>
+
+    </div>
+    <div class = "center">
+      <button mat-stroked-button type="submit" color="accent">Sign Up</button>
     </div>
     </form>
   </div>
