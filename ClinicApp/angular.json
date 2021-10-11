@@ -71,6 +71,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "sslKey": "src/ssl/server.key",
+            "sslCert": "src/ssl/server.crt",
+            "ssl":true },
           "configurations": {
             "production": {
               "browserTarget": "ClinicApp:build:production"

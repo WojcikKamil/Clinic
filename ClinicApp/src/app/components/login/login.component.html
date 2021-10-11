@@ -1,0 +1,27 @@
+<body>
+  <div class="container">
+    <div class="header">Sign In</div>
+      <form #loginForm="ngForm" (ngSubmit)='login()' autocomplete = "off">
+
+        <div class="content">
+          <mat-form-field appearance="fill">
+            <mat-label class="placeholder-color">Email</mat-label>
+              <input name = "email" [(ngModel)]="model.email" class="input" matInput placeholder="Email" required>
+          </mat-form-field>
+        </div>
+
+      <div class="content">
+        <mat-form-field appearance="fill">
+          <mat-label class="placeholder-color">Password</mat-label>
+            <input name = "password" [(ngModel)]="model.password" class="input" matInput [type]="hide ? 'password' : 'text'" placeholder="Password" required>
+        </mat-form-field>
+      </div>
+      <div class = "center margin">
+        <button mat-stroked-button type="submit" color="accent">Sign In</button>
+      </div>
+      </form>
+      <div class="message">
+        <p>Not yet registered?<a mat-button stroked routerLink="/SignUp">Sign Up</a></p>
+      </div>
+  </div>
+</body>

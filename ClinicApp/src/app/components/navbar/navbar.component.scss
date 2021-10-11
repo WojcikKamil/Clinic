@@ -1,0 +1,31 @@
+.mat-toolbar.mat-custom {
+  background: rgb(240, 237, 235);
+  color: goldenrod;
+  justify-content: space-between;
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+
+}
+
+a {
+  font-size: 22px;
+  padding-right: 1rem;
+  font-weight: 600;
+}
+
+.title {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.margin{
+  margin: 5px;
+}
+
+.const{
+  position: absolute;
+  left: 200px;
+}

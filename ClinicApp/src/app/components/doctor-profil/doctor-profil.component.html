@@ -1,0 +1,21 @@
+<div class="space" *ngIf="member">
+  <div class="col-sm-2">
+    <div class="card-img">
+      <img src="assets/images/doctor.png" class="card-img-top">
+        <div class="card-body">
+          <div class="center">
+            <h1>{{member.name}} {{member.surname}}</h1>
+          </div>
+          <div class="center">
+            <strong>Speciality</strong>
+            <p>{{member.speciality}}</p>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group d-flex">
+              <button class="btn btn-success">Ask a question</button>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
