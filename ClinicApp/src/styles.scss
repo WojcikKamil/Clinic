@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.navbar {
+  position: unset !important;
+  display: inline !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+@media (min-width: 576px){
+.col-sm-1 {
+    flex: 0 0 auto;
+    width: 11.1% !important;
+}
+}
