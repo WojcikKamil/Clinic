@@ -1,12 +1,16 @@
 .mat-toolbar.mat-custom {
-  background: lightsalmon;
-  color: #fff;
+  background: rgb(240, 237, 235);
+  color: goldenrod;
   justify-content: space-between;
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+
 }
 
 a {
-  font-size: 20px;
+  font-size: 22px;
   padding-right: 1rem;
+  font-weight: 600;
 }
 
 .title {
@@ -19,4 +23,9 @@ a {
 
 .margin{
   margin: 5px;
+}
+
+.const{
+  position: absolute;
+  left: 200px;
 }
