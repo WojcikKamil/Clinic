@@ -43,7 +43,20 @@ namespace ClinicAPI.Controllers
             
         }
 
-        [Authorize]
+        [HttpGet("email")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetDoctorByEmail(string email)
+        {
+
+            var doctor = await _unitOfWork.Doctors.Get(q => q.Email == email);
+            var result = _mapper.Map<DoctorDTO>(doctor);
+            return Ok(result);
+
+        }
+
+
+
         [HttpGet("{id:int}", Name = "GetDoctor")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -57,7 +70,6 @@ namespace ClinicAPI.Controllers
             
         }
 
-        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -69,19 +81,12 @@ namespace ClinicAPI.Controllers
                 _logger.LogError($"Invalid POST attempt in {nameof(AddDoctor)}");
                 return BadRequest(ModelState);
             }
-            try
-            {
+           
                 var doctor = _mapper.Map<Doctor>(doctorDTO);
                 await _unitOfWork.Doctors.Insert(doctor);
                 await _unitOfWork.Save();
 
                 return CreatedAtRoute("GetDoctor", new { id = doctor.Id }, doctor);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(AddDoctor)}");
-                return StatusCode(500, "Internal Server Error. Please try again later");
-            }
         }
 
         
@@ -97,8 +102,6 @@ namespace ClinicAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
                 var doctor = await _unitOfWork.Doctors.Get(q => q.Id == id);
                 if(doctor == null)
                 {
@@ -111,14 +114,9 @@ namespace ClinicAPI.Controllers
                 await _unitOfWork.Save();
 
                 return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(UpdateDoctor)}");
-                return StatusCode(500, "Internal Server Error. Please try again later");
-            }
         }
 
+        
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -131,7 +129,6 @@ namespace ClinicAPI.Controllers
                 return BadRequest();
             }
 
-           
                 var doctor = await _unitOfWork.Doctors.Get(q => q.Id == id);
                 if (doctor == null)
                 {
@@ -144,6 +141,6 @@ namespace ClinicAPI.Controllers
                 return NoContent();
 
         }
-        
+
     }
 }

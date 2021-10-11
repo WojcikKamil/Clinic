@@ -97,6 +97,9 @@ namespace ClinicAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -119,6 +122,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 1,
+                            Email = "Adelaida@Timko.com",
                             Name = "Adelaida",
                             OfficeId = 1,
                             Speciality = "Gynecology",
@@ -127,6 +131,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 2,
+                            Email = "Zehang@Wang.com",
                             Name = "Zehang",
                             OfficeId = 2,
                             Speciality = "Surgery",
@@ -135,6 +140,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 3,
+                            Email = "Sasha@Steklovata.com",
                             Name = "Sasha",
                             OfficeId = 3,
                             Speciality = "Psychology",
@@ -177,6 +183,30 @@ namespace ClinicAPI.Migrations
                             Id = 3,
                             Floor = 1,
                             Name = "Psychiatry office"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Floor = 1,
+                            Name = "Office"
                         });
                 });
 
@@ -277,22 +307,22 @@ namespace ClinicAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9947a872-f505-4d67-9816-a6b52ee6e156",
-                            ConcurrencyStamp = "92263bff-cf33-43d4-a44b-510d60949916",
+                            Id = "153ab403-902a-4deb-ad24-036360639e14",
+                            ConcurrencyStamp = "e51917ba-3563-4a82-bbc2-4c9d6ca6c93e",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "9cf71395-b7eb-46e3-bbbd-fddded845b56",
-                            ConcurrencyStamp = "e0fbe38c-3505-4ed2-a41e-78b6386ceb71",
+                            Id = "5ade324e-2f57-4df6-a80a-2fc5e16317fe",
+                            ConcurrencyStamp = "a8d0d4c3-dbf8-49a9-85cc-23db17b4239b",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
-                            Id = "13aaa0b6-1f41-42d4-a424-f3edac0ec9a2",
-                            ConcurrencyStamp = "65c58d5e-6f16-4ca2-8603-1bc5ff92b543",
+                            Id = "80b88993-1583-4fef-a530-6987d5b161d0",
+                            ConcurrencyStamp = "5c2d8ec0-a26f-4c02-88d9-7674071086ab",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

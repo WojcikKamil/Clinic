@@ -18,6 +18,7 @@ namespace ClinicAPI.Entities
                       Id = 1,
                       Name = "Adelaida",
                       Surname = "Timko",
+                      Email = "Adelaida@Timko.com",
                       Speciality = "Gynecology",
                       OfficeId = 1,
 
@@ -27,6 +28,7 @@ namespace ClinicAPI.Entities
                     Id = 2,
                     Name = "Zehang",
                     Surname = "Wang",
+                    Email = "Zehang@Wang.com",
                     Speciality = "Surgery",
                     OfficeId = 2,
                 },
@@ -35,6 +37,7 @@ namespace ClinicAPI.Entities
                     Id = 3,
                     Name = "Sasha",
                     Surname = "Steklovata",
+                    Email = "Sasha@Steklovata.com",
                     Speciality = "Psychology",
                     OfficeId = 3,
                 }

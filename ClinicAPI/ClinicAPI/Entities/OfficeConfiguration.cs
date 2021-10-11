@@ -30,7 +30,31 @@ namespace ClinicAPI.Entities
                   Id = 3,
                   Name = "Psychiatry office",
                   Floor = 1,
-              }
+              },
+               new Office
+               {
+                   Id = 4,
+                   Name = "Office",
+                   Floor = 1,
+               },
+                new Office
+                {
+                    Id = 5,
+                    Name = "Office",
+                    Floor = 1,
+                },
+                 new Office
+                 {
+                     Id = 6,
+                     Name = "Office",
+                     Floor = 1,
+                 },
+                  new Office
+                  {
+                      Id = 7,
+                      Name = "Office",
+                      Floor = 1,
+                  }
               );
         }
     }

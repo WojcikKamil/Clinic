@@ -78,7 +78,9 @@ namespace ClinicAPI.Controllers
                 {
                     return Unauthorized();
                 }
-                return Accepted(new { Token = await _authManager.CreateToken() });
+                return Accepted(new { 
+                    Email = userDTO.Email,
+                    Token = await _authManager.CreateToken() });
         }
 
     }

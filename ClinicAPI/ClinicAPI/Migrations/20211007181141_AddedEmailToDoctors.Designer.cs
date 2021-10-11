@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClinicAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211004091927_AddedBasicIdentity")]
-    partial class AddedBasicIdentity
+    [Migration("20211007181141_AddedEmailToDoctors")]
+    partial class AddedEmailToDoctors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,6 +99,9 @@ namespace ClinicAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -121,6 +124,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 1,
+                            Email = "Adelaida@Timko.com",
                             Name = "Adelaida",
                             OfficeId = 1,
                             Speciality = "Gynecology",
@@ -129,6 +133,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 2,
+                            Email = "Zehang@Wang.com",
                             Name = "Zehang",
                             OfficeId = 2,
                             Speciality = "Surgery",
@@ -137,6 +142,7 @@ namespace ClinicAPI.Migrations
                         new
                         {
                             Id = 3,
+                            Email = "Sasha@Steklovata.com",
                             Name = "Sasha",
                             OfficeId = 3,
                             Speciality = "Psychology",
@@ -179,6 +185,30 @@ namespace ClinicAPI.Migrations
                             Id = 3,
                             Floor = 1,
                             Name = "Psychiatry office"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Floor = 1,
+                            Name = "Office"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Floor = 1,
+                            Name = "Office"
                         });
                 });
 
@@ -275,6 +305,29 @@ namespace ClinicAPI.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5051c7-130b-4ff4-a4e8-59df06a3918e",
+                            ConcurrencyStamp = "1dd5df67-c999-4804-b3ef-e5b67446d1bf",
+                            Name = "Patient",
+                            NormalizedName = "PATIENT"
+                        },
+                        new
+                        {
+                            Id = "943e96e9-8ffb-4b10-abd3-61de03f58bf2",
+                            ConcurrencyStamp = "1b6b2896-ab63-4992-8241-d94b0d67ff06",
+                            Name = "Doctor",
+                            NormalizedName = "DOCTOR"
+                        },
+                        new
+                        {
+                            Id = "e4d50f48-b96a-4e7a-853b-c7b39154e39a",
+                            ConcurrencyStamp = "084a16eb-22e1-4414-b7b2-85da3ab86a4f",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
